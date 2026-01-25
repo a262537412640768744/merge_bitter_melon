@@ -14,5 +14,62 @@ body {
 }
 
 div.caption {
-    font-size: 25px;
+    font-size: 20px;
+}
+
+div.options > button {
+    font-size: 18px;
+    height: 40px;
+    width: 80px;
+}
+
+button.merge {
+    background: red;
+}
+
+button.product {
+    background: aquamarine;
+}
+
+button.stage {
+    background: linear-gradient(90deg, 
+        magenta, purple, magenta, purple, 
+        magenta, purple, magenta, purple, 
+        magenta, purple, magenta
+    );
+}
+
+button.about {
+    background: gray;
+}
+
+button.plot {
+    background: linear-gradient(90deg, 
+        red, yellow, lime, cyan, 
+        blue, magenta, red
+    );
+}
+
+div.card {
+    background: linear-gradient(90deg, 
+        green, lime, green, lime, 
+        green, lime, green, lime,
+        green, lime, green);
+    border: 1px solid white;
+    display: inline-block;
+    height: 125px;
+    width: 75px;
+    font-size: 12px;
+}
+
+button.produce {
+    background: green;
+    height: 30px;
+    width: 240px;
+}
+
+button.merge_upgrade {
+    background: linear-gradient(green, lime, green);
+    height: 90px;
+    width: 200px;
 }

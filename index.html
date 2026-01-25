@@ -8,8 +8,48 @@
 </head>
 <body>
     <div class="caption">
-        你有 1 个苦瓜<br>
-        最高苦瓜等级为 0 级
+        你有 1 个苦瓜 <br>
+        最高苦瓜等级为 0 级 <br>
+        你在阶段 0
     </div>
+    <div class="options">
+        <button class="merge" onmousedown="option = 0">合成</button>
+        <button class="stage" onmousedown="option = 3">阶段</button>
+        <button class="about" onmousedown="option = 4">关于</button>
+        <button class="plot" onmousedown="option = 5">剧情</button>
+    </div>
+    <br>
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                等级 <br>
+                0 <br>
+                层级 <br>
+                0 <br>
+                阶段 0 <br>
+            </div>
+        </div>
+        <div class="work">
+            两个等级相等的苦瓜可以合成一个高一级的苦瓜 <br>
+            <button class="produce">
+                生产一个 0 级苦瓜
+            </button> <br>
+            <button class="merge_upgrade">
+                合成升级 0 (0 / 1) <br>
+                以每秒4次的速度自动生产苦瓜 <br>
+                需求:等级达到 4
+            </button>
+            <button class="merge_upgrade">
+                合成升级 7 (0 / 1) <br>
+                自动购买合成升级1~6 <br>
+                需求:等级达到 1024
+            </button>
+        </div>
+    </div>
+    <script src="scripts/big_number.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/merge.js"></script>
+    <script src="scripts/about.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
