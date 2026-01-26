@@ -43,7 +43,7 @@ button.about {
     background: gray;
 }
 
-button.plot {
+button.plots {
     background: linear-gradient(90deg, 
         red, yellow, lime, cyan, 
         blue, magenta, red
@@ -72,4 +72,12 @@ button.merge_upgrade {
     background: linear-gradient(green, lime, green);
     height: 90px;
     width: 200px;
+}
+
+button.plot {
+    background: #000000;
+}
+
+div.plot {
+    text-align: left;
 }

@@ -1,4 +1,5 @@
 let game = {
+    plot: -1,
     stage: 0,
     merge: {
         bitter_melon: big(1), 

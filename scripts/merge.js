@@ -9,7 +9,7 @@ function display_bitter_melon(level, layer) {
 }
 
 function display_all_bitter_melon(number, layer, depth = 10) {
-    if (!ge(number, big(0.9999999999999))) {
+    if (!ge(number, big(0.999999999999))) {
         return ""
     }
     if (depth == 0) {
@@ -19,7 +19,7 @@ function display_all_bitter_melon(number, layer, depth = 10) {
         return display_bitter_melon(
             floor(log(big(2), number)), layer) + "..."
     }
-    let level = floor(add(log(big(2), number), big(0.0000000000001)))
+    let level = floor(add(log(big(2), number), big(0.000000000001)))
     let remain = sub(number, pow(big(2), level))
     return display_bitter_melon(level, layer) + 
         display_all_bitter_melon(remain, layer, depth - 1)
