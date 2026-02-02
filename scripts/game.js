@@ -6,7 +6,16 @@ let game = {
         upgrades: [
             false, big(0), big(0), big(0), 
             big(0), big(0), big(0), false
-        ]
+        ],
+        layer: {}
+    },
+    product: {
+        red_bean: big(0),
+        rb_upgrades: [big(0), false],
+        soya_bean: big(0),
+        sb_upgrades: [big(0), false],
+        mung_bean: big(0),
+        mb_upgrades: [big(0), false],
     }
 }
 

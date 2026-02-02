@@ -76,11 +76,11 @@ function format_int(n, f = 0) {
         return "-" + format_int(neg(n), f)
     }
     if (n.layer == 0) {
-        return `${Math.floor(n.number + 0.00000000001)}`
+        return `${Math.floor(n.number + 0.0000000001)}`
     }
-    if (n.layer == 1 && n.number < 1 + Math.log10(3)) {
+    if (n.layer == 1 && n.number < 2) {
         return `${Math.floor(
-            10 ** 10 ** (n.number - 1) + 0.00000000001)}`
+            10 ** 10 ** (n.number - 1) + 0.0000000001)}`
     }
     return format(n)
 }

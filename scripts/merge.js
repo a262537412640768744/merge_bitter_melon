@@ -9,7 +9,7 @@ function display_bitter_melon(level, layer) {
 }
 
 function display_all_bitter_melon(number, layer, depth = 10) {
-    if (!ge(number, big(0.999999999999))) {
+    if (!ge(number, big(0.9999999999))) {
         return ""
     }
     if (depth == 0) {
@@ -19,7 +19,7 @@ function display_all_bitter_melon(number, layer, depth = 10) {
         return display_bitter_melon(
             floor(log(big(2), number)), layer) + "..."
     }
-    let level = floor(add(log(big(2), number), big(0.000000000001)))
+    let level = floor(add(log(big(2), number), big(0.0000000001)))
     let remain = sub(number, pow(big(2), level))
     return display_bitter_melon(level, layer) + 
         display_all_bitter_melon(remain, layer, depth - 1)
@@ -48,6 +48,19 @@ function buy_upgrade(i) {
     }
 }
 
+function buy_max_upgrade(i) {
+    if (ge(game.merge.bitter_melon, 
+        pow(big(2), cost_upgrade(i, game.merge.upgrades[i])))) {
+        game.merge.upgrades[i] = floor(add(
+            div(
+                log(big(2), game.merge.bitter_melon), 
+                big(2 ** i)
+            ),
+            big(0.5)
+        ))
+    }
+}
+
 function generate_bitter_melon_0() {
     game.merge.bitter_melon = add(game.merge.bitter_melon, big(1))
 }
@@ -57,7 +70,7 @@ function display_upgrade(i) {
         return `<button class="merge_upgrade"
         onmousedown="buy_upgrade(0)">
     合成升级 0 (${+game.merge.upgrades[0]} / 1) <br>
-    以每次4秒的速度自动生产苦瓜 <br>
+    以${game.stage ? "每秒2次" : "每次2秒"}的速度自动生产苦瓜 <br>
     需求:等级达到 4
 </button>`
     }
@@ -106,19 +119,35 @@ function display_merge() {
 function update_merge() {
     if (game.merge.upgrades[0]) {
         game.merge.bitter_melon = add(
-            game.merge.bitter_melon, mul(pow(big(2), 
-            add(game.merge.upgrades[1], 
-                add(game.merge.upgrades[2],
-                    add(game.merge.upgrades[3],
-                        add(game.merge.upgrades[4], 
-                            add(game.merge.upgrades[5],
-                                game.merge.upgrades[6]
+            game.merge.bitter_melon, mul(mul(pow(big(2), 
+                add(game.merge.upgrades[1], 
+                    add(game.merge.upgrades[2],
+                        add(game.merge.upgrades[3],
+                            add(game.merge.upgrades[4], 
+                                add(game.merge.upgrades[5],
+                                    game.merge.upgrades[6]
+                                )
                             )
                         )
                     )
                 )
+            ), big(0.025 * (game.stage ? 4 : 1))), 
+            mul(
+                add(div(game.product.red_bean, big(256)), big(1)),
+                mul(
+                    add(div(game.product.soya_bean, big(1024)), big(1)),
+                    add(div(game.product.mung_bean, big(4096)), big(1))
+                )
             )
-        ), big(0.0125)))
+        ))
+    }
+    if (game.merge.upgrades[7]) {
+        buy_max_upgrade(1)
+        buy_max_upgrade(2)
+        buy_max_upgrade(3)
+        buy_max_upgrade(4)
+        buy_max_upgrade(5)
+        buy_max_upgrade(6)
     }
     if (option == 0) {
         content.innerHTML = display_merge()

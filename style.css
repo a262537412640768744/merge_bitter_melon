@@ -57,6 +57,7 @@ div.card {
         green, lime, green);
     border: 1px solid white;
     display: inline-block;
+    vertical-align: top;
     height: 125px;
     width: 75px;
     font-size: 12px;
@@ -69,9 +70,67 @@ button.produce {
 }
 
 button.merge_upgrade {
+    vertical-align: top;
     background: linear-gradient(green, lime, green);
     height: 90px;
     width: 200px;
+}
+
+div.red_bean {
+    background: maroon;
+    display: inline-block;
+    vertical-align: top;
+    height: 200px;
+    width: 300px;
+}
+
+button.rb_upgrade {
+    background: maroon;
+    vertical-align: top;
+    height: 90px;
+    width: 135px;
+}
+
+div.soya_bean {
+    background: olive;
+    display: inline-block;
+    vertical-align: top;
+    height: 200px;
+    width: 300px;
+}
+
+button.sb_upgrade {
+    background: olive;
+    vertical-align: top;
+    height: 90px;
+    width: 135px;
+}
+
+div.mung_bean {
+    background: green;
+    display: inline-block;
+    vertical-align: top;
+    height: 200px;
+    width: 300px;
+}
+
+button.mb_upgrade {
+    background: green;
+    vertical-align: top;
+    height: 90px;
+    width: 135px;
+}
+
+div.stage {
+    background: purple;
+    color: magenta;
+}
+
+button.stage_reset {
+    background: purple;
+    color: magenta;
+    height: 80px;
+    width: 240px;
 }
 
 button.plot {

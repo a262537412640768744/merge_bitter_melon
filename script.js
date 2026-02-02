@@ -5,6 +5,8 @@ let options = document.querySelector("div.options")
 function display_options() {
     return `<button class="merge" 
     onmousedown="option = 0">合成</button>` + 
+    (game.plot >= 2 ? `<button class="product" 
+    onmousedown="option = 1">生成物</button>` : "") +
     (game.plot >= 1 ? `<button class="stage" 
     onmousedown="option = 3">阶段</button>` : "") + 
     `<button class="about" onmousedown="option = 4">关于</button>
@@ -23,11 +25,10 @@ function update() {
     options.innerHTML = display_options()
     update_caption()
     update_merge()
+    update_product()
+    update_stage()
     update_about()
     update_plot()
-    if (![0, 4, 5].includes(option)) {
-        content.innerHTML = "没做"
-    }
     save()
 }
 
