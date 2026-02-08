@@ -9,8 +9,8 @@ function display_options() {
     onmousedown="option = 1">生成物</button>` : "") +
     (game.plot >= 1 ? `<button class="stage" 
     onmousedown="option = 3">阶段</button>` : "") + 
-    `<button class="about" onmousedown="option = 4">关于</button>
-<button class="plots" onmousedown="option = 5">剧情</button>
+    `<button class="about" onmousedown="option = 4">关于</button>\
+<button class="plots" onmousedown="option = 5">剧情</button>\
 <button class="achievement" onmousedown="option = 6">成就</button>`
 }
 
