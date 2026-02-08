@@ -1,5 +1,5 @@
 let stage_costs = [
-    big(256), big(2 ** 32), big(2 ** 256)
+    big(256), big(2 ** 48)
 ]
 
 let stage_effect = [
@@ -18,6 +18,10 @@ function stage_effects(stage) {
 }
 
 function stage_reset() {
+    if (game.stage = 1) {
+        alert("请等待下一版本更新")
+        return
+    }
     if (ge(game.merge.bitter_melon, 
         pow(big(2), stage_costs[game.stage]))) {
             game.merge = {
@@ -26,9 +30,20 @@ function stage_reset() {
                 false, big(0), big(0), big(0), 
                 big(0), big(0), big(0), false
             ],
+            black_hole: {
+                energy: big(0), 
+                upgrades: [big(0), big(0), big(0), big(0)]
+            },
             layer: {}
         }
-        game.product = {}
+        game.product = {
+            red_bean: big(0),
+            rb_upgrades: [big(0), false],
+            soya_bean: big(0),
+            sb_upgrades: [big(0), false],
+            mung_bean: big(0),
+            mb_upgrades: [big(0), false]
+        }
         game.stage++
     }
 }

@@ -36,9 +36,9 @@ function abs(n) {
     }
 }
 
-function format(n, f = 0) {
+function format(n) {
     if (n.sign == -1) {
-        return "-" + format(neg(n), f)
+        return "-" + format(neg(n))
     }
     if (n.layer == 0) {
         return n.number.toFixed(2)
@@ -49,14 +49,14 @@ function format(n, f = 0) {
     if (n.layer == 1 && n.number < 2) {
         return (10 ** 10 ** (n.number - 1)).toFixed(0)
     }
-    if (n.layer == 1 && n.number < 2 + Math.log(3)) {
+    if (n.layer == 1 && n.number < 2 + Math.log10(6)) {
         let e = 10 ** 10 ** (n.number - 2)
         return `${(10 ** (e - Math.floor(e))).toFixed(2)
             }&middot;10<sup>${Math.floor(e)}</sup>`
     }
-    if (n.layer == 1 && n.number < 2 + Math.log(3)) {
+    if (n.layer == 1 && n.number < 3) {
         let e = 10 ** 10 ** (n.number - 2)
-        return `${(10 ** (e - Math.floor(e))).toFixed(0)
+        return `${Math.floor(10 ** (e - Math.floor(e)))
             }&middot;10<sup>${Math.floor(e)}</sup>`
     }
     if (n.layer == 1 && n.number < 5) {
@@ -68,19 +68,19 @@ function format(n, f = 0) {
     }
 }
 
-function format_int(n, f = 0) {
+function format_int(n) {
     if (n.layer == 0 && n.number < 1) {
         return "0"
     }
     if (n.sign == -1) {
-        return "-" + format_int(neg(n), f)
+        return "-" + format_int(neg(n))
     }
     if (n.layer == 0) {
-        return `${Math.floor(n.number + 0.0000000001)}`
+        return `${Math.floor(n.number + 0.00000001)}`
     }
     if (n.layer == 1 && n.number < 2) {
         return `${Math.floor(
-            10 ** 10 ** (n.number - 1) + 0.0000000001)}`
+            10 ** 10 ** (n.number - 1) + 0.00000001)}`
     }
     return format(n)
 }

@@ -93,12 +93,43 @@ function buy_sb_upgrade(n) {
 }
 
 function buy_mb_upgrade(n) {
+    if (n == 0) {
+        if (ge(game.product.mung_bean, 
+            pow(big(4), game.product.mb_upgrades[0])
+        )) {
+            game.product.mb_upgrades[0] = add(
+                game.product.mb_upgrades[0], big(1)
+            )
+        }
+    }
+    if (n == 1) {
+        if (ge(game.product.mung_bean, big(4294967296))) {
+            game.product.mb_upgrades[1] = true
+        }
+    }
+}
+
+function buy_max_rsm_upgrade() {
+    if (ge(game.product.red_bean, 
+        pow(big(4), game.product.rb_upgrades[0])
+    )) {
+        game.product.rb_upgrades[0] = add(floor(
+            log(big(4), game.product.red_bean)
+        ), big(1))
+    }
+    if (ge(game.product.soya_bean, 
+        pow(big(4), game.product.sb_upgrades[0])
+    )) {
+        game.product.sb_upgrades[0] = add(floor(
+            log(big(4), game.product.soya_bean)
+        ), big(1))
+    }
     if (ge(game.product.mung_bean, 
         pow(big(4), game.product.mb_upgrades[0])
     )) {
-        game.product.mb_upgrades[0] = add(
-            game.product.mb_upgrades[0], big(1)
-        )
+        game.product.mb_upgrades[0] = add(floor(
+            log(big(4), game.product.mung_bean)
+        ), big(1))
     }
 }
 
@@ -138,16 +169,17 @@ function display_sb_upgrades() {
 
 function display_mb_upgrades() {
     return `<button class="mb_upgrade"
-        onmousedown="buy_mb_upgrade(0)">
+    onmousedown="buy_mb_upgrade(0)">
     绿豆升级 0 (${format(game.product.mb_upgrades[0])}) <br>
     使绿豆产量翻倍 <br>
     需求: ${format(pow(big(4), game.product.mb_upgrades[0]))} <br>
     绿豆
 </button>
-<button class="mb_upgrade">
-    绿豆升级 1 (0 / 1) <br>
-    ??? <br>
-    需求: ??? <br>
+<button class="mb_upgrade"
+    onmousedown="buy_mb_upgrade(1)">
+    绿豆升级 1 (${+game.product.mb_upgrades[1]} / 1) <br>
+    进入黑洞 <br>
+    需求: 4294967296 <br>
     绿豆
 </button>`
 }
@@ -178,23 +210,30 @@ function display_product() {
 }
 
 function update_product() {
-    if (ge(game.merge.bitter_melon, pow(big(2), bean_cost[0]))) {
-        game.product.red_bean = add(
-            game.product.red_bean,
-            mul(rb_production(), big(0.05))
-        )
-    }
-    if (ge(game.merge.bitter_melon, pow(big(2), bean_cost[1]))) {
-        game.product.soya_bean = add(
-            game.product.soya_bean,
-            mul(sb_production(), big(0.05))
-        )
-    }
-    if (ge(game.merge.bitter_melon, pow(big(2), bean_cost[2]))) {
-        game.product.mung_bean = add(
-            game.product.mung_bean,
-            mul(mb_production(), big(0.05))
-        )
+    if (game.product.mb_upgrades[1]) {
+        buy_max_rsm_upgrade()
+        game.product.red_bean = rb_production()
+        game.product.soya_bean = sb_production()
+        game.product.mung_bean = mb_production()
+    } else {
+        if (ge(game.merge.bitter_melon, pow(big(2), bean_cost[0]))) {
+            game.product.red_bean = add(
+                game.product.red_bean,
+                mul(rb_production(), big(0.05))
+            )
+        }
+        if (ge(game.merge.bitter_melon, pow(big(2), bean_cost[1]))) {
+            game.product.soya_bean = add(
+                game.product.soya_bean,
+                mul(sb_production(), big(0.05))
+            )
+        }
+        if (ge(game.merge.bitter_melon, pow(big(2), bean_cost[2]))) {
+            game.product.mung_bean = add(
+                game.product.mung_bean,
+                mul(mb_production(), big(0.05))
+            )
+        }
     }
     if (option == 1) {
         content.innerHTML = display_product()

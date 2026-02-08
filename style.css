@@ -50,6 +50,10 @@ button.plots {
     );
 }
 
+button.achievement {
+    background: gold;
+}
+
 div.card {
     background: linear-gradient(90deg, 
         green, lime, green, lime, 
@@ -76,49 +80,67 @@ button.merge_upgrade {
     width: 200px;
 }
 
+div.black_hole {
+    background: radial-gradient(
+        circle at center, 
+        white,
+        black
+    );
+    color: black;
+    sup {
+        color: black;
+    }
+}
+
+button.bh_upgrade {
+    background: black;
+    height: 90px;
+    width: 200px;
+}
+
 div.red_bean {
     background: maroon;
     display: inline-block;
     vertical-align: top;
-    height: 200px;
-    width: 300px;
+    height: 225px;
+    width: 315px;
 }
 
 button.rb_upgrade {
     background: maroon;
     vertical-align: top;
-    height: 90px;
-    width: 135px;
+    height: 105px;
+    width: 150px;
 }
 
 div.soya_bean {
     background: olive;
     display: inline-block;
     vertical-align: top;
-    height: 200px;
-    width: 300px;
+    height: 225px;
+    width: 315px;
 }
 
 button.sb_upgrade {
     background: olive;
     vertical-align: top;
-    height: 90px;
-    width: 135px;
+    height: 105px;
+    width: 150px;
 }
 
 div.mung_bean {
     background: green;
     display: inline-block;
     vertical-align: top;
-    height: 200px;
-    width: 300px;
+    height: 225px;
+    width: 315px;
 }
 
 button.mb_upgrade {
     background: green;
     vertical-align: top;
-    height: 90px;
-    width: 135px;
+    height: 105px;
+    width: 150px;
 }
 
 div.stage {
@@ -131,6 +153,9 @@ button.stage_reset {
     color: magenta;
     height: 80px;
     width: 240px;
+    sup {
+        color: magenta;
+    }
 }
 
 button.plot {
@@ -139,4 +164,15 @@ button.plot {
 
 div.plot {
     text-align: left;
+}
+
+table {
+    display: inline-block;
+}
+
+td.achievement {
+    font-size: 12px;
+    border: 1px solid white;
+    height: 60px;
+    width: 60px;
 }
