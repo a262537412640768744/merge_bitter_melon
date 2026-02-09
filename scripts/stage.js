@@ -1,5 +1,6 @@
 let stage_costs = [
-    big(256), big(2 ** 48)
+    big(256), big(2 ** 48), 
+    {sign: 1, number: 1.0017914515960633, layer: 2}
 ]
 
 let stage_effect = [
@@ -18,7 +19,7 @@ function stage_effects(stage) {
 }
 
 function stage_reset() {
-    if (game.stage = 1) {
+    if (game.stage == 1) {
         alert("请等待下一版本更新")
         return
     }

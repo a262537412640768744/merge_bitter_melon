@@ -66,6 +66,22 @@ function format(n) {
             layer: 1
         }) + "</sup>"
     }
+    if (n.layer == 1) {
+        return `(10^)<sup>${
+    Math.floor(n.number)}</sup>${
+    (10 ** (n.number - Math.floor(n.number))).toFixed(2)}`
+    }
+    if (n.layer == 2 && n.number < 1 + Math.log10(
+        Math.log10(10 + Math.log10(6)))) {
+        let tet = 10 ** 10 ** (10 ** 10 ** (n.number - 1) - 10)
+        return `(10^)<sup>${
+    Math.floor(tet)}</sup>${
+    (10 ** (tet - Math.floor(tet))).toFixed(2)}`
+    }
+    if (n.layer == 2 && n.number < 1 + Math.log10(Math.log10(11))) {
+        let tet = 10 ** 10 ** (10 ** 10 ** (n.number - 1) - 10)
+        return `f<sub>3</sub>(${Math.floor(tet) + 2})`
+    }
 }
 
 function format_int(n) {
@@ -197,12 +213,15 @@ function log10(a) {
             layer: 0
         }
     }
-    if (a.number < 10) {
+    if (a.layer == 1) {
         return {
             sign: 1,
             number: a.number - 1,
             layer: 1
         }
+    }
+    if (a.layer == 2) {
+        
     }
 }
 
