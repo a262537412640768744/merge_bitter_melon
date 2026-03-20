@@ -5,13 +5,13 @@ let game = {
         bitter_melon: big(1), 
         upgrades: [
             false, big(0), big(0), big(0), 
-            big(0), big(0), big(0), false
+            big(0), big(0), big(0), false, false
         ],
         black_hole: {
             energy: big(0), 
             upgrades: [big(0), big(0), big(0), big(0)]
         },
-        layer: {}
+        layer: []
     },
     product: {
         red_bean: big(0),
@@ -19,7 +19,9 @@ let game = {
         soya_bean: big(0),
         sb_upgrades: [big(0), false],
         mung_bean: big(0),
-        mb_upgrades: [big(0), false]
+        mb_upgrades: [big(0), false],
+        potato: big(0),
+        pt_upgrades: [big(0), false]
     },
     achievement: new Array(1024).fill(false)
 }

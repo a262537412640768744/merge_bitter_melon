@@ -54,11 +54,20 @@ button.achievement {
     background: gold;
 }
 
+button.help {
+    background: linear-gradient(90deg, 
+        blue, navy, blue, navy,
+        blue, navy, blue, navy,
+        blue, navy, blue
+    );
+}
+
 div.card {
     background: linear-gradient(90deg, 
         green, lime, green, lime, 
         green, lime, green, lime,
-        green, lime, green);
+        green, lime, green
+    );
     border: 1px solid white;
     display: inline-block;
     vertical-align: top;
@@ -98,54 +107,88 @@ button.bh_upgrade {
     width: 200px;
 }
 
+button.layer {
+    background: green;
+    height: 40px;
+    width: 150px;
+}
+
+button.layer_jump {
+    background: radial-gradient(
+        circle at center, 
+        green,
+        lime
+    );
+    height: 120px;
+    width: 300px;
+}
+
 div.red_bean {
     background: maroon;
     display: inline-block;
     vertical-align: top;
-    height: 225px;
-    width: 315px;
+    height: 245px;
+    width: 340px;
 }
 
 button.rb_upgrade {
     background: maroon;
     vertical-align: top;
     height: 105px;
-    width: 150px;
+    width: 160px;
 }
 
 div.soya_bean {
     background: olive;
     display: inline-block;
     vertical-align: top;
-    height: 225px;
-    width: 315px;
+    height: 245px;
+    width: 340px;
 }
 
 button.sb_upgrade {
     background: olive;
     vertical-align: top;
     height: 105px;
-    width: 150px;
+    width: 160px;
 }
 
 div.mung_bean {
     background: green;
     display: inline-block;
     vertical-align: top;
-    height: 225px;
-    width: 315px;
+    height: 245px;
+    width: 340px;
 }
 
 button.mb_upgrade {
     background: green;
     vertical-align: top;
     height: 105px;
-    width: 150px;
+    width: 160px;
+}
+
+div.potato {
+    background: #804000;
+    display: inline-block;
+    vertical-align: top;
+    height: 245px;
+    width: 340px;
+}
+
+button.pt_upgrade {
+    background: #804000;
+    vertical-align: top;
+    height: 105px;
+    width: 160px;
 }
 
 div.stage {
     background: purple;
     color: magenta;
+    li {
+        color: magenta;
+    }
 }
 
 button.stage_reset {
@@ -175,4 +218,8 @@ td.achievement {
     border: 1px solid white;
     height: 60px;
     width: 60px;
+}
+
+div.help {
+    text-align: left;
 }

@@ -63,8 +63,10 @@ v0.1 2026/1/26 添加剧情 结局:
 1.16&middot;10<sup>77</sup> 个苦瓜 <br>
 v1 2026/2/2 添加阶段,生成物 结局:
 1.19&middot;10<sup>4932</sup> 个苦瓜 <br>
-v1.1 2026/2/8 添加黑洞,成就 结局:
-10<sup>8.47&middot;10<sup>13</sup></sup> 个苦瓜
+v1.1 2026/2/8 添加黑洞机制,成就 结局:
+10<sup>8.47&middot;10<sup>13</sup></sup> 个苦瓜 <br>
+v2 2026/3/20 添加帮助,层级机制,完善生成物 结局:
+(10^)<sup>11</sup>2.36 个苦瓜
 <hr>
 相关推荐: <br>
 极度推荐:<a href="https://https://rbn-rewrite-team.github.io/RBNR/">\

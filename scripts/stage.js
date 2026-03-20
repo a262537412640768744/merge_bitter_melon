@@ -1,28 +1,25 @@
 let stage_costs = [
     big(256), big(2 ** 48), 
-    {sign: 1, number: 1.0017914515960633, layer: 2}
+    {sign: 1, number: 1.01, layer: 2}
 ]
 
 let stage_effect = [
     "",
-    ` &middot;第1次阶段重置时,合成升级0效果×4,\
-解锁生成物,在"生成物"中解锁红豆,黄豆,绿豆 `
+    `<li>第1次阶段重置时,合成升级0效果×4,\
+解锁生成物,在"生成物"中解锁红豆,黄豆,绿豆</li>`,
+    `<li>第2次阶段重置时,始终保留256级苦瓜和合成升级0与7,\
+降低生成物升级成本,提升生成物效果,在"生成物"中解锁土豆,解锁苦瓜层级</li>`
 ]
 
 function stage_effects(stage) {
     if (stage == 0) {
         return ""
     } else {
-        return stage_effects(stage - 1) + 
-            stage_effect[stage] + "<br>"
+        return stage_effects(stage - 1) + stage_effect[stage]
     }
 }
 
 function stage_reset() {
-    if (game.stage == 1) {
-        alert("请等待下一版本更新")
-        return
-    }
     if (ge(game.merge.bitter_melon, 
         pow(big(2), stage_costs[game.stage]))) {
             game.merge = {
@@ -46,6 +43,11 @@ function stage_reset() {
             mb_upgrades: [big(0), false]
         }
         game.stage++
+        if (game.stage >= 2) {
+            game.merge.bitter_melon = big(2 ** 256)
+            game.merge.upgrades[0] = true
+            game.merge.upgrades[7] = true
+        }
     }
 }
 
@@ -57,7 +59,9 @@ function display_stage() {
         需求:苦瓜等级达到 ${format_int(stage_costs[game.stage])}
     </button> <br>
     阶段重置会带来一些奖励,目前已有的奖励如下: <br>
-    ${stage_effects(game.stage)}
+    <ul>
+        ${stage_effects(game.stage)}
+    </ul>
 </div>`
 }
 

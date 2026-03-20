@@ -4,7 +4,9 @@ let achievements = [
     "一个开始", "自动化工厂", "一个纸箱", "升级6",
     "第一道坎", "地球的大小", "太阳的大小", "第二道坎", 
     "144级苦瓜", "半径1光年", "第三道坎", "200级苦瓜", 
-    "216级苦瓜", "目标的7/8", "快要结束了", "阶段0结束"
+    "216级苦瓜", "目标的7/8", "快要结束了", "阶段0结束",
+    "新的开始", "重回128", "生产红豆", "疯狂生长",
+    "二级生产", "三级生产", "自动时代", "八级生产"
 ]
 
 let achievements_content = [
@@ -59,10 +61,10 @@ function display_achievement() {
 }
 
 function update_achievement() {
-    if (!ge(big(0), game.merge.bitter_melon)) {
+    if (!ge(big(1), game.merge.bitter_melon)) {
         game.achievement[0] = true
     }
-    if (!ge(big(0), game.merge.upgrades[0])) {
+    if (game.merge.upgrades[0]) {
         game.achievement[1] = true
     }
     if (ge(game.merge.bitter_melon, big(10 ** 9))) {

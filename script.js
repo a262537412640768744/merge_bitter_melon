@@ -11,7 +11,8 @@ function display_options() {
     onmousedown="option = 3">阶段</button>` : "") + 
     `<button class="about" onmousedown="option = 4">关于</button>\
 <button class="plots" onmousedown="option = 5">剧情</button>\
-<button class="achievement" onmousedown="option = 6">成就</button>`
+<button class="achievement" onmousedown="option = 6">成就</button>\
+<button class="help" onmousedown="option = 7">帮助</button>`
 }
 
 function update_caption() {
@@ -31,6 +32,7 @@ function update() {
     update_about()
     update_plot()
     update_achievement()
+    update_help()
     save()
 }
 

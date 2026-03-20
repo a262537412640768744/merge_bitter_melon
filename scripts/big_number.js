@@ -1,3 +1,7 @@
+function numlog9(n) {
+    return Math.log(n) / Math.log(9)
+}
+
 function big(n) {
     if (Math.abs(n) < 10) {
         return {
@@ -14,7 +18,8 @@ function big(n) {
     } else {
         return {
             sign: Math.sign(n),
-            number: 2 + Math.log10(Math.log10(Math.log10(Math.abs(n)))),
+            number: 2 + Math.log10(
+                Math.log10(Math.log10(Math.abs(n)))),
             layer: 1
         }
     }
@@ -72,14 +77,14 @@ function format(n) {
     (10 ** (n.number - Math.floor(n.number))).toFixed(2)}`
     }
     if (n.layer == 2 && n.number < 1 + Math.log10(
-        Math.log10(10 + Math.log10(6)))) {
-        let tet = 10 ** 10 ** (10 ** 10 ** (n.number - 1) - 10)
+        numlog9(9 + Math.log10(6)))) {
+        let tet = 10 ** 10 ** (9 ** 10 ** (n.number - 1) - 9)
         return `(10^)<sup>${
     Math.floor(tet)}</sup>${
     (10 ** (tet - Math.floor(tet))).toFixed(2)}`
     }
-    if (n.layer == 2 && n.number < 1 + Math.log10(Math.log10(11))) {
-        let tet = 10 ** 10 ** (10 ** 10 ** (n.number - 1) - 10)
+    if (n.layer == 2 && n.number < 1 + Math.log10(numlog9(10))) {
+        let tet = 10 ** 10 ** (9 ** 10 ** (n.number - 1) - 9)
         return `f<sub>3</sub>(${Math.floor(tet) + 2})`
     }
 }
@@ -92,11 +97,11 @@ function format_int(n) {
         return "-" + format_int(neg(n))
     }
     if (n.layer == 0) {
-        return `${Math.floor(n.number + 0.00000001)}`
+        return `${Math.floor(n.number + 0.000000001)}`
     }
     if (n.layer == 1 && n.number < 2) {
         return `${Math.floor(
-            10 ** 10 ** (n.number - 1) + 0.00000001)}`
+            10 ** 10 ** (n.number - 1) + 0.000000001)}`
     }
     return format(n)
 }
@@ -220,9 +225,27 @@ function log10(a) {
             layer: 1
         }
     }
-    if (a.layer == 2) {
-        
+    if (a.layer == 2 && a.number < 1 + Math.log10(numlog9(
+        9 + Math.log10(Math.log10(11)))
+    )) {
+        let tet = 10 ** 10 ** (9 ** 10 ** (a.number - 1) - 9)
+        return {
+            sign: 1,
+            number: tet - 1,
+            layer: 1
+        }
     }
+    if (a.layer == 2 && a.number < 1 + Math.log10(numlog9(10))) {
+        let tet = 10 ** 10 ** (9 ** 10 ** (a.number - 1) - 9)
+        return {
+            sign: 1,
+            number: 1 + Math.log10(numlog9(
+                9 + Math.log10(Math.log10(tet - 1))
+            )),
+            layer: 2
+        }
+    }
+    return a
 }
 
 function pow10(a) {
@@ -240,6 +263,96 @@ function pow10(a) {
         return {
             sign: 1,
             number: a.number + 1,
+            layer: 1
+        }
+    }
+    if (a.layer == 1) {
+        return {
+            sign: 1,
+            number: 1 + Math.log10(numlog9(
+                9 + Math.log10(Math.log10(a.number + 1)))),
+            layer: 2
+        }
+    }
+    if (a.layer == 2 && a.number < 1 + Math.log10(numlog9(
+        9 + Math.log10(Math.log10(9999999999))
+    ))) {
+        let tet = 10 ** 10 ** (9 ** 10 ** (a.number - 1) - 9)
+        return {
+            sign: 1,
+            number: 1 + Math.log10(numlog9(
+                9 + Math.log10(Math.log10(tet + 1)))),
+            layer: 2
+        }
+    }
+    return a
+}
+
+function tetr10(a) {
+    if (a.sign == -1) {
+        return tetr10(neg(a))
+    }
+    if (a.layer == 0 && a.number < 1) {
+        return {
+            sign: 1,
+            number: 10 ** a.number,
+            layer: 0
+        }
+    }
+    if (a.layer == 0) {
+        return {
+            sign: 1,
+            number: a.number,
+            layer: 1
+        }
+    }
+    if (a.layer == 1) {
+        return {
+            sign: 1,
+            number: 1 + Math.log10(numlog9(8 + a.number)),
+            layer: 2
+        }
+    }
+    if (a.layer == 2 && a.number < 1 + Math.log10(numlog9(72))) {
+        let lnum = 9 ** 10 ** (a.number - 1)
+        return {
+            sign: 1,
+            number: 1 + Math.log10(numlog9(9 + lnum)),
+            layer: 2
+        }
+    }
+}
+
+function slog10(a) {
+    if (a.sign == -1) {
+        return slog10(neg(a))
+    }
+    if (a.layer == 0 && a.number < 1) {
+        return {
+            sign: -1,
+            number: a.number - 1,
+            layer: 0
+        }
+    }
+    if (a.layer == 0) {
+        return {
+            sign: 1,
+            number: Math.log10(a.number),
+            layer: 0
+        }
+    }
+    if (a.layer == 1) {
+        return {
+            sign: 1,
+            number: a.number,
+            layer: 0
+        }
+    }
+    if (a.layer == 2 && a.number < 1 + Math.log10(numlog9(18))) {
+        let lnum = 9 ** 10 ** (a.number - 1)
+        return {
+            sign: 1,
+            number: lnum - 8,
             layer: 1
         }
     }
