@@ -1,5 +1,5 @@
 let current_layer_index = -1
-let layer_jump_finite = [
+const layer_jump_finite = [
     pow(big(2), big(256)),
     pow(big(2), pow(big(2), big(256))),
     pow10(pow(big(2), pow(big(2), big(256)))),

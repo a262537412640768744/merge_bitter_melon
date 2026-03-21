@@ -1,28 +1,32 @@
+const start_merge = {
+    bitter_melon: big(1), 
+    upgrades: [
+        false, big(0), big(0), big(0), 
+        big(0), big(0), big(0), false, false
+    ],
+    black_hole: {
+        energy: big(0), 
+        upgrades: [big(0), big(0), big(0), big(0)]
+    },
+    layer: []
+}
+
+const start_product = {
+    red_bean: big(0),
+    rb_upgrades: [big(0), false],
+    soya_bean: big(0),
+    sb_upgrades: [big(0), false],
+    mung_bean: big(0),
+    mb_upgrades: [big(0), false],
+    potato: big(0),
+    pt_upgrades: [big(0), false]
+}
+
 let game = {
     plot: -1,
     stage: 0,
-    merge: {
-        bitter_melon: big(1), 
-        upgrades: [
-            false, big(0), big(0), big(0), 
-            big(0), big(0), big(0), false, false
-        ],
-        black_hole: {
-            energy: big(0), 
-            upgrades: [big(0), big(0), big(0), big(0)]
-        },
-        layer: []
-    },
-    product: {
-        red_bean: big(0),
-        rb_upgrades: [big(0), false],
-        soya_bean: big(0),
-        sb_upgrades: [big(0), false],
-        mung_bean: big(0),
-        mb_upgrades: [big(0), false],
-        potato: big(0),
-        pt_upgrades: [big(0), false]
-    },
+    merge: start_merge,
+    product: start_product,
     achievement: new Array(1024).fill(false)
 }
 

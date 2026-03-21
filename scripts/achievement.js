@@ -1,15 +1,16 @@
 let current_achievement = -1
 
-let achievements = [
+const achievements = [
     "一个开始", "自动化工厂", "一个纸箱", "升级6",
     "第一道坎", "地球的大小", "太阳的大小", "第二道坎", 
     "144级苦瓜", "半径1光年", "第三道坎", "200级苦瓜", 
     "216级苦瓜", "目标的7/8", "快要结束了", "阶段0结束",
-    "新的开始", "重回128", "生产红豆", "疯狂生长",
-    "二级生产", "三级生产", "自动时代", "八级生产"
+    "新的开始", "生产红豆", "疯狂生长", "二级生产", 
+    "三级生产", "自动时代", "六级生产", "八级生产",
+    "暴涨苦瓜1", "生产绿豆"
 ]
 
-let achievements_content = [
+const achievements_content = [
     "生产 1 个苦瓜", "购买合成升级 0", 
     "苦瓜数量达到 1000000000", "购买合成升级 6", 
     "苦瓜等级达到 64", "苦瓜数量达到 1.08&middot;10<sup>30</sup>",
@@ -17,7 +18,12 @@ let achievements_content = [
     "苦瓜等级达到 144", "苦瓜数量达到 3.55&middot;10<sup>57</sup>",
     "苦瓜等级达到 192", "苦瓜等级达到 200", 
     "苦瓜等级达到 216", "苦瓜等级达到 224", 
-    "苦瓜等级达到 250", "苦瓜等级达到 256"
+    "苦瓜等级达到 250", "苦瓜等级达到 256",
+    "进行一次阶段重置", "开始生产红豆",
+    "红豆数量达到 4096", "红豆生产等级达到 2", 
+    "红豆生产等级达到 3", "购买合成升级 7",
+    "红豆生产等级达到 6", "红豆生产等级达到 8",
+    "购买红豆升级 1", "开始生产绿豆"
 ]
 
 function display_an_achievement(m, n) {
@@ -57,6 +63,7 @@ function display_achievement() {
 } <br>
 <table>
     ${display_line_achievement(0)}
+    ${display_line_achievement(1)}
 </table>`
 }
 
@@ -108,6 +115,41 @@ function update_achievement() {
     }
     if (ge(game.merge.bitter_melon, big(2 ** 256))) {
         game.achievement[15] = true
+    }
+    if (game.stage) {
+        game.achievement[16] = true
+    }
+    if (game.stage && ge(game.merge.bitter_melon, big(2 ** 256))) {
+        game.achievement[17] = true
+    }
+    if (ge(game.product.red_bean, big(4096))) {
+        game.achievement[18] = true
+    }
+    if (game.stage && ge(game.merge.bitter_melon, 
+        pow(big(2), big(512)))) {
+        game.achievement[19] = true
+    }
+    if (game.stage && ge(game.merge.bitter_melon, 
+        pow(big(2), big(768)))) {
+        game.achievement[20] = true
+    }
+    if (game.merge.upgrades[7]) {
+        game.achievement[21] = true
+    }
+    if (game.stage && ge(game.merge.bitter_melon, 
+        pow(big(2), big(1536)))) {
+        game.achievement[22] = true
+    }
+    if (game.stage && ge(game.merge.bitter_melon, 
+        pow(big(2), big(2048)))) {
+        game.achievement[23] = true
+    }
+    if (game.product.rb_upgrades[1]) {
+        game.achievement[24] = true
+    }
+    if (game.stage && ge(game.merge.bitter_melon, 
+        pow(big(2), big(4096)))) {
+        game.achievement[25] = true
     }
     if (option == 6) {
         content.innerHTML = display_achievement()

@@ -1,6 +1,6 @@
 let current_help = 0
 
-let help = [
+const help = [
     `说明:<br>
 这里的"帮助"会展现关于游戏计数法,序数理论的帮助<br>
 如果你需要关于游戏内容的帮助,可以看"剧情"`,

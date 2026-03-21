@@ -1,6 +1,6 @@
 let current_plot = 0
 
-let plots = [
+const plots = [
     `(你来到了苦瓜星球)<br>
 你:我是谁?我在哪?<br>
 苦瓜大仙1029号:你好,欢迎来到苦瓜星球,这里人人都爱吃苦瓜.<br>

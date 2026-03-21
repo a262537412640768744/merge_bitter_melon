@@ -1,9 +1,9 @@
-let stage_costs = [
+const stage_costs = [
     big(256), big(2 ** 48), 
     {sign: 1, number: 1.01, layer: 2}
 ]
 
-let stage_effect = [
+const stage_effect = [
     "",
     `<li>第1次阶段重置时,合成升级0效果×4,\
 解锁生成物,在"生成物"中解锁红豆,黄豆,绿豆</li>`,
@@ -22,26 +22,8 @@ function stage_effects(stage) {
 function stage_reset() {
     if (ge(game.merge.bitter_melon, 
         pow(big(2), stage_costs[game.stage]))) {
-            game.merge = {
-            bitter_melon: big(1), 
-            upgrades: [
-                false, big(0), big(0), big(0), 
-                big(0), big(0), big(0), false
-            ],
-            black_hole: {
-                energy: big(0), 
-                upgrades: [big(0), big(0), big(0), big(0)]
-            },
-            layer: {}
-        }
-        game.product = {
-            red_bean: big(0),
-            rb_upgrades: [big(0), false],
-            soya_bean: big(0),
-            sb_upgrades: [big(0), false],
-            mung_bean: big(0),
-            mb_upgrades: [big(0), false]
-        }
+        game.merge = start_merge
+        game.product = start_product
         game.stage++
         if (game.stage >= 2) {
             game.merge.bitter_melon = big(2 ** 256)

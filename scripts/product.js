@@ -1,8 +1,8 @@
-let bean_cost = [
+const bean_cost = [
     big(256), big(1024), big(4096), 
     pow(big(2), big(65536))
 ]
-let bean_name = ["红豆", "黄豆", "绿豆", "土豆"]
+const bean_name = ["红豆", "黄豆", "绿豆", "土豆"]
 
 function bean_production_level(n) {
     if (n < 3) {
