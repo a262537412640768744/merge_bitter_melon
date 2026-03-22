@@ -22,8 +22,8 @@ function stage_effects(stage) {
 function stage_reset() {
     if (ge(game.merge.bitter_melon, 
         pow(big(2), stage_costs[game.stage]))) {
-        game.merge = start_merge
-        game.product = start_product
+        game.merge = start_merge()
+        game.product = start_product()
         game.stage++
         if (game.stage >= 2) {
             game.merge.bitter_melon = big(2 ** 256)
